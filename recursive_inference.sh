@@ -16,10 +16,9 @@ find "$ROOT_DIR" -mindepth 2 -maxdepth 2 -type d | while read -r folder; do
         rel_path="${folder#$ROOT_DIR/}"
 
         # Create corresponding output folder
-        output_folder="${rel_path}_preds"
+        output_folder="${ROOT_DIR}/${rel_path}_preds"
         # mkdir -p "$output_folder"
-
         # Run the processing program
-        python inference.py --img_folder "$folder" --out_folder "$output_folder" --batch_size 24
+        CUDA_VISIBLE_DEVICES=0 python inference.py --img_folder "$folder" --out_folder "$output_folder" --batch_size 36
     fi
 done

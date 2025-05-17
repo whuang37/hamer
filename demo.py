@@ -99,6 +99,7 @@ def main():
         for vitposes in vitposes_out:
             left_hand_keyp = vitposes['keypoints'][-42:-21]
             right_hand_keyp = vitposes['keypoints'][-21:]
+            print(right_hand_keyp)
 
             # Rejecting not confident detections
             keyp = left_hand_keyp
